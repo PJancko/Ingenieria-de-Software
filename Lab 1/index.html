@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1</title>
+</head>
+<body>
+    <h1>Laboratorio 1: Ordenar 3 numeros</h1>
+    <p>Alumno: Jancko Gallardo Pablo Alejandro</p>
+    <script>
+        class ordenar{
+            a=0; b=0; c=0;
+            constructor(a,b,c){
+                this.a = a; this.b = b; this.c = c;
+            }
+            simple(){
+                if(a<b && b<c){
+                    console.log(a,b,c);
+                }else if(a<b && c<b){
+                    console.log(a,c,b);
+                }else if(b<a && a<c){
+                    console.log(b,a,c)
+                }else if(b<a && c<a){
+                    console.log(b,c,a)
+                }else if(c<a && a<b){
+                    console.log(c,a,b)
+                }else if(c<a && b<a){
+                    console.log(c,b,a)
+                }else if(c<b && b<a){
+                    console.log(c,b,a)
+                }
+            }
+            intercambioVariables(){
+                var aux;
+                if (a>b) {
+                    aux=a; a=b; b=aux;
+                }
+                if (a>c) {
+                    aux=a; a=c; c=aux;
+                }
+                if (b>c) {
+                    aux=b; b=c; c=aux;
+                }
+                console.log(a,b,c);
+            }
+            porArray(){
+                var arreglo = [a,b,c];
+                let i, j, aux
+                for(i=0; i < 3; i++){
+                    for(j=0; j<3; j++){
+                        if(arreglo[j] > arreglo[j+1]){
+                            aux = arreglo[j];
+                            arreglo[j] = arreglo[j+1];
+                            arreglo[j+1] = aux;
+                        }
+                    }
+                }
+                for(i=0; i<3; i++){
+                    console.log(arreglo[i]);
+                }
+            }
+        }   
+        var a,b,c;
+        a=7; b=3; c=11;
+        let ord = new ordenar(a,b,c);
+        console.log("Lab1: Jancko Gallardo Pablo Alejandro");
+        console.log("Ordenamiento simple")
+        console.log("Numeros ingresados:", a, b, c);
+        console.log("valores ordenados");
+        ord.simple();
+        console.log("Ordenamiento por intercambio de variables")
+        ord.intercambioVariables();
+        a=7; b=3; c=11;
+        console.log("Ordenamiento utilizando un array")
+        ord.porArray();
+    </script>
+</body>
+</html>

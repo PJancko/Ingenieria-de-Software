@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Iniciar sesión</h3>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="cuenta">Cuenta:</label>
+                                <input type="text" class="form-control" id="cuenta" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasena">Contraseña:</label>
+                                <input type="password" class="form-control" id="contrasena" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="user.js"></script>
+    <script src="UserController.js"></script>
+    <script>
+        // Simulación del método accesoPermitido de la clase ControlUsuario
+        function accesAllowed(cuenta, contrasena) {
+            // Aquí debes implementar la lógica para verificar el acceso del usuario
+            // Por ejemplo, puedes realizar una petición AJAX al servidor para verificar la cuenta y la contraseña
+            let existeusuario = ctrlUser.accesAllowed(cuenta,contrasena);
+            return (existeusuario);
+            //return cuenta === "ramiro" && contrasena === "1234";
+        }
+
+        let ctrlUser = new UserController()
+        ctrlUser.getUsers();
+       
+     //   console.log(ctrlUser.lista);
+       
+        // Manejador de eventos para el envío del formulario
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evitar que se envíe el formulario de manera convencional
+
+            // Obtener los valores de cuenta y contraseña
+            let cuenta = document.getElementById("cuenta").value;
+            let contrasena = document.getElementById("contrasena").value;
+
+            // Verificar el acceso del usuario
+            if (accesAllowed(cuenta, contrasena)) {
+                alert("Acceso permitido"); // Mensaje de acceso permitido
+                // Aquí podrías redireccionar al usuario a otra página o realizar otras acciones
+            } else {
+                alert("Acceso denegado"); // Mensaje de acceso denegado
+            }
+        });
+    </script>
+
+</body>
+
+</html>
