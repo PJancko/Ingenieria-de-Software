@@ -1,0 +1,20 @@
+extends ../layout 
+
+block content
+  h1 Detalles del Usuario
+
+  .card
+    .card-body
+      h5.card-title #{user ? user.name : 'Nombre no disponible'}
+      h6.card-subtitle.text-muted Username: #{user ? user.username : 'No disponible'}
+      p.card-text Email: #{user ? user.email : 'No disponible'}
+      p.card-text Rol: #{user ? user.rol : 'No disponible'}
+      p.card-text Archivo: #{user && user.imagen ? user.imagen : 'No disponible'}
+      if user && user.imagen
+        img(src=user.imagen width="100" class="my-2")
+      p.card-text Última actualización: #{user ? user.updatedAt : 'No disponible'}
+      
+      if user && user.id
+        a(href=`/users/${user.id}/edit` class="btn btn-warning") Editar
+        form(action=`/users/${user.id}/delete` method="POST" class="d-inline ms-2")
+          button(type="submit" class="btn btn-danger") Eliminar
