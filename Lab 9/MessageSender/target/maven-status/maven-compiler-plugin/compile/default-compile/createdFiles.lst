@@ -1,0 +1,6 @@
+com\example\MsgEmail.class
+com\example\MsgWhatsApp.class
+com\example\Main.class
+com\example\MsgPhone.class
+com\example\ISender.class
+com\example\User.class
